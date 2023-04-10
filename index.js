@@ -4,6 +4,7 @@ const app = express();
 // Settings
 app.set("AppName", "My first server");
 app.set("port", 3000);
+app.set("view engine", "ejs"); // others are pug, handlebars, etc.
 
 // Middlewares
 app.use(express.json());
@@ -14,6 +15,11 @@ app.get("/user", (req, res) => {
         username: "Cameron",
         lastname: "Howe"
     });
+});
+
+app.get("/", (req, res) => {
+    const data = [{name: "john"}, {name: "joe"}, {name: "cameron"}, {name: "ryan"}];
+    res.render("index.ejs", {people: data});
 });
 
 app.post("/user/:id", (req, res) => {
