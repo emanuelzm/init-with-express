@@ -1,25 +1,10 @@
 const express = require("express");
-const morgan = require("morgan");
 
 const app = express();
 
-//Middlewares
-
-/*function logger(req, res, next) {
-    console.log(`Route received: ${req.protocol}://${req.get("host")}${req.originalUrl}`);
-    next();
-}*/
-
 app.use(express.json());
-app.use(morgan("dev"));
-
-/*app.all("/user", (req, res, next) => {
-    console.log("Por aquí paso");
-    next();
-});*/
 
 app.get("/user", (req, res) => {
-    //res.send("Petición GET recibida");
     res.json({
         username: "Cameron",
         lastname: "Howe"
@@ -40,6 +25,8 @@ app.put("/user/:id", (req, res) => {
 app.delete("/user/:userId", (req, res) => {
     res.send(`User ${req.params.userId} deleted`);
 });
+
+app.use(express.static("public"));
 
 app.listen(3000, () => {
     console.log("Serve on port 5000");
