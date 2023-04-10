@@ -1,9 +1,14 @@
 const express = require("express");
-
 const app = express();
 
+// Settings
+app.set("AppName", "My first server");
+app.set("port", 3000);
+
+// Middlewares
 app.use(express.json());
 
+// Routes
 app.get("/user", (req, res) => {
     res.json({
         username: "Cameron",
@@ -28,6 +33,7 @@ app.delete("/user/:userId", (req, res) => {
 
 app.use(express.static("public"));
 
-app.listen(3000, () => {
-    console.log("Serve on port 5000");
+app.listen(app.get("port"), () => {
+    console.log(app.get("AppName"));
+    console.log(`Serve on port ${app.get("port")}`);
 });
