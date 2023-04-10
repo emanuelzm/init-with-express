@@ -1,3 +1,12 @@
+/* For database integration with MongoDB, Mongoose, Sequelize, etc. 
+    For authentication with Passport, JWT, etc. 
+    For file upload with Multer, etc.
+    For email with Nodemailer, etc.
+    For payment with Stripe, etc.
+
+    ... And other options based in Express.js is: Adonis.js, Sails.js, Nest.js, Koa, hapi, kraken, etc.
+*/
+
 const express = require("express");
 const app = express();
 
