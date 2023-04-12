@@ -1,24 +1,12 @@
-/* For database integration with MongoDB, Mongoose, Sequelize, etc. 
-    For authentication with Passport, JWT, etc. 
-    For file upload with Multer, etc.
-    For email with Nodemailer, etc.
-    For payment with Stripe, etc.
-
-    ... And other options based in Express.js is: Adonis.js, Sails.js, Nest.js, Koa, hapi, kraken, etc.
-*/
-
 const express = require("express");
 const app = express();
 
-// Settings
 app.set("AppName", "My first server");
 app.set("port", 3000);
-app.set("view engine", "ejs"); // others are pug, handlebars, etc.
+app.set("view engine", "ejs");
 
-// Middlewares
 app.use(express.json());
 
-// Routes
 app.get("/user", (req, res) => {
     res.json({
         username: "Cameron",
@@ -27,8 +15,7 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    const data = [{name: "john"}, {name: "joe"}, {name: "cameron"}, {name: "ryan"}];
-    res.render("index.ejs", {people: data});
+    res.sendFile("public/index.html", { root: __dirname });
 });
 
 app.post("/user/:id", (req, res) => {
